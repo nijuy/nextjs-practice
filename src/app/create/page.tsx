@@ -1,6 +1,9 @@
 'use client'
+import { useRouter } from 'next/navigation'
 
 const Create = () => {
+  const router = useRouter()
+
   const onSubmitPost = (formEvent: React.FormEvent<HTMLFormElement>) => {
     formEvent.preventDefault()
 
@@ -17,6 +20,10 @@ const Create = () => {
     }
 
     fetch('http://localhost:9999/topics', options)
+      .then((response) => response.json())
+      .then((result) => {
+        router.push(`read/${result.id}`)
+      })
   }
 
   return (
