@@ -22,6 +22,7 @@ const Create = () => {
     fetch('http://localhost:9999/topics', options)
       .then((response) => response.json())
       .then((result) => {
+        router.refresh()
         router.push(`read/${result.id}`)
       })
   }
