@@ -26,7 +26,7 @@ const Update = (props: UpdateProps) => {
       body: JSON.stringify({ title, body }),
     }
 
-    fetch(`http://localhost:9999/topics/${id}`, options)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/topics/${id}`, options)
       .then((response) => response.json())
       .then((result) => {
         router.refresh()

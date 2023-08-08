@@ -5,7 +5,7 @@ interface ReadProps {
 }
 const Read = async (props: ReadProps) => {
   const response = await fetch(
-    `http://localhost:9999/topics/${props.params.id}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/topics/${props.params.id}`,
     { cache: 'no-store' }
   )
   const topic = await response.json()
