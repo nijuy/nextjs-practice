@@ -8,15 +8,17 @@ export const Control = () => {
 
   const router = useRouter()
 
-  const onDeletePost = () => {
+  const onDeletePost = async () => {
     const options = { method: 'DELETE' }
 
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/topics/${id}`, options)
-      .then((response) => response.json())
-      .then(() => {
-        router.push('/')
-        router.refresh()
-      })
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/topics/${id}`,
+      options
+    )
+    await response.json()
+
+    router.push('/')
+    router.refresh()
   }
 
   return (

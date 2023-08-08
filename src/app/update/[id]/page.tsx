@@ -15,7 +15,7 @@ const Update = (props: UpdateProps) => {
   const id = props.params.id
   const router = useRouter()
 
-  const onUpdatePost = (formEvent: React.FormEvent<HTMLFormElement>) => {
+  const onUpdatePost = async (formEvent: React.FormEvent<HTMLFormElement>) => {
     formEvent.preventDefault()
 
     const options = {
@@ -26,21 +26,26 @@ const Update = (props: UpdateProps) => {
       body: JSON.stringify({ title, body }),
     }
 
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/topics/${id}`, options)
-      .then((response) => response.json())
-      .then((result) => {
-        router.refresh()
-        router.push(`/read/${result.id}`)
-      })
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/topics/${id}`,
+      options
+    )
+    const result = await response.json()
+
+    router.refresh()
+    router.push(`/read/${result.id}`)
   }
 
   useEffect(() => {
-    fetch(`http://localhost:9999/topics/${id}`)
-      .then((response) => response.json())
-      .then((result) => {
-        setTitle(result.title)
-        setBody(result.body)
-      })
+    const getPost = async () => {
+      const response = await fetch(`http://localhost:9999/topics/${id}`)
+      const result = await response.json()
+
+      setTitle(result.title)
+      setBody(result.body)
+    }
+
+    getPost()
   }, [])
 
   return (

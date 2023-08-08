@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 const Create = () => {
   const router = useRouter()
 
-  const onSubmitPost = (formEvent: React.FormEvent<HTMLFormElement>) => {
+  const onSubmitPost = async (formEvent: React.FormEvent<HTMLFormElement>) => {
     formEvent.preventDefault()
 
     const target = formEvent.target as HTMLFormElement
@@ -19,12 +19,14 @@ const Create = () => {
       body: JSON.stringify({ title, body }),
     }
 
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/topics`, options)
-      .then((response) => response.json())
-      .then((result) => {
-        router.refresh()
-        router.push(`read/${result.id}`)
-      })
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/topics`,
+      options
+    )
+    const result = await response.json()
+
+    router.refresh()
+    router.push(`read/${result.id}`)
   }
 
   return (
