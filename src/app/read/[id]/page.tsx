@@ -1,10 +1,6 @@
 import { Topic } from '@/types/serverData.type'
+import { ComponentProps as ReadProps } from '@/types/component.type'
 
-interface ReadProps {
-  params: {
-    id: string
-  }
-}
 const Read = async (props: ReadProps) => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/topics/${props.params.id}`,

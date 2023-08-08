@@ -1,13 +1,8 @@
 'use client'
 import { Topic } from '@/types/serverData.type'
+import { ComponentProps as UpdateProps } from '@/types/component.type'
 import { useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
-
-interface UpdateProps {
-  params: {
-    id: string
-  }
-}
 
 const Update = (props: UpdateProps) => {
   const [title, setTitle] = useState('')
