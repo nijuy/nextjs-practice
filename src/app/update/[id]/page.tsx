@@ -29,6 +29,7 @@ const Update = (props: UpdateProps) => {
     fetch(`http://localhost:9999/topics/${id}`, options)
       .then((response) => response.json())
       .then((result) => {
+        router.refresh()
         router.push(`/read/${result.id}`)
       })
   }
