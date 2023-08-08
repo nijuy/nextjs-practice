@@ -1,4 +1,5 @@
 'use client'
+import { Topic } from '@/types/serverData.type'
 import { useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
 
@@ -30,7 +31,7 @@ const Update = (props: UpdateProps) => {
       `${process.env.NEXT_PUBLIC_API_URL}/topics/${id}`,
       options
     )
-    const result = await response.json()
+    const result: Topic = await response.json()
 
     router.refresh()
     router.push(`/read/${result.id}`)
@@ -39,7 +40,7 @@ const Update = (props: UpdateProps) => {
   useEffect(() => {
     const getPost = async () => {
       const response = await fetch(`http://localhost:9999/topics/${id}`)
-      const result = await response.json()
+      const result: Topic = await response.json()
 
       setTitle(result.title)
       setBody(result.body)

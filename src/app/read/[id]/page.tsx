@@ -1,3 +1,5 @@
+import { Topic } from '@/types/serverData.type'
+
 interface ReadProps {
   params: {
     id: string
@@ -8,7 +10,7 @@ const Read = async (props: ReadProps) => {
     `${process.env.NEXT_PUBLIC_API_URL}/topics/${props.params.id}`,
     { cache: 'no-store' }
   )
-  const topic = await response.json()
+  const topic: Topic = await response.json()
 
   return (
     <>

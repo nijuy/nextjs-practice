@@ -1,4 +1,5 @@
 'use client'
+import { Topic } from '@/types/serverData.type'
 import { useRouter } from 'next/navigation'
 
 const Create = () => {
@@ -23,7 +24,7 @@ const Create = () => {
       `${process.env.NEXT_PUBLIC_API_URL}/topics`,
       options
     )
-    const result = await response.json()
+    const result: Topic = await response.json()
 
     router.refresh()
     router.push(`read/${result.id}`)

@@ -17,7 +17,7 @@ export default async function RootLayout({
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/topics`, {
     cache: 'no-store',
   })
-  const topics = await response.json()
+  const topics: Topic[] = await response.json()
 
   return (
     <html>
@@ -26,7 +26,7 @@ export default async function RootLayout({
           <Link href="/">WEB</Link>
         </h1>
         <ol>
-          {topics.map((topic: Topic) => (
+          {topics.map((topic) => (
             <li key={topic.id}>
               <Link href={`/read/${topic.id}`}>{topic.title}</Link>
             </li>
