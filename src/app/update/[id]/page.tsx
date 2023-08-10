@@ -46,9 +46,10 @@ const Update = (props: UpdateProps) => {
 
   return (
     <>
-      <form onSubmit={onUpdatePost}>
+      <form className="w-3/5 h-full" onSubmit={onUpdatePost}>
         <p>
           <input
+            className="border-2 w-full mb-4 px-2"
             type="text"
             name="title"
             placeholder="글 제목을 입력해주세요"
@@ -60,6 +61,7 @@ const Update = (props: UpdateProps) => {
         </p>
         <p>
           <textarea
+            className="border-2 w-full h-2/4 mb-4 px-2"
             name="body"
             placeholder="글 내용을 입력해주세요"
             value={body}
@@ -68,7 +70,11 @@ const Update = (props: UpdateProps) => {
             }}
           ></textarea>
         </p>
-        <button> 수정하기 </button>
+        <div className="w-full flex justify-center items-center">
+          <button className="border-green-500 hover:bg-green-500 border-2 rounded-full text-center text-sm px-4 py-0.5 mb-2">
+            수정하기
+          </button>
+        </div>
       </form>
     </>
   )
