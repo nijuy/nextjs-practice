@@ -10,8 +10,9 @@ const Read = async (props: ReadProps) => {
 
   return (
     <>
-      <article>
-        <h2>{topic.title}</h2>
+      <article className="border-2 w-3/5 min-h-60 mb-4 p-4">
+        <h2 className="text-2xl font-bold">{topic.title}</h2>
+        <br />
         <p>{topic.body}</p>
       </article>
     </>
