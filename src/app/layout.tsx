@@ -22,18 +22,22 @@ export default async function RootLayout({
   return (
     <html>
       <body>
-        <h1>
-          <Link href="/">WEB</Link>
-        </h1>
-        <ol>
-          {topics.map((topic) => (
-            <li key={topic.id}>
-              <Link href={`/read/${topic.id}`}>{topic.title}</Link>
-            </li>
-          ))}
-        </ol>
-        {children}
-        <Control />
+        <div className="flex flex-col justify-center items-center">
+          <h1 className="text-3xl font-semibold mb-4">
+            <Link href="/">낙서장</Link>
+          </h1>
+          <div className="w-3/5 mb-3">
+            <ol className="list-decimal list-inside">
+              {topics.map((topic) => (
+                <li key={topic.id}>
+                  <Link href={`/read/${topic.id}`}>{topic.title}</Link>
+                </li>
+              ))}
+            </ol>
+          </div>
+          {children}
+          <Control />
+        </div>
       </body>
     </html>
   )

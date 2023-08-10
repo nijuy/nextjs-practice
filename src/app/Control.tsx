@@ -23,16 +23,16 @@ export const Control = () => {
 
   return (
     <ul>
-      <li>
-        <Link href="/create"> create </Link>
+      <li className="border-sky-500 hover:bg-sky-500 border-2 rounded-full text-center text-sm px-4 py-0.5 mb-2">
+        <Link href="/create"> 글쓰기 </Link>
       </li>
       {id && (
         <>
-          <li>
-            <Link href={`/update/${id}`}> update </Link>
+          <li className="border-green-500 hover:bg-green-500 border-2 rounded-full text-center text-sm px-4 py-0.5 mb-2">
+            <Link href={`/update/${id}`}> 수정하기 </Link>
           </li>
-          <li>
-            <input type="button" value="delete" onClick={onDeletePost} />
+          <li className="border-rose-500 hover:bg-rose-500  border-2 rounded-full text-center text-sm px-4 py-0.5 mb-2">
+            <input type="button" value="삭제하기" onClick={onDeletePost} />
           </li>
         </>
       )}
